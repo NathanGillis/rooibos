@@ -1,4 +1,4 @@
-namespace rooibos
+namespace Rooibos
   class BaseTestReporter
 
     public testRunner = invalid

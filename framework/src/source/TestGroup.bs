@@ -1,4 +1,4 @@
-namespace rooibos
+namespace Rooibos
   ' /**
   '  * @module TestSuite
   '  * @description All brs files that include `'@TestSuite` annotations automatically extend the TestSuite.
@@ -47,7 +47,7 @@ namespace rooibos
       m.global = testSuite.global
       m.top = testSuite.top
       m.scene = testSuite.scene
-      m.stats = new rooibos.Stats()
+      m.stats = new Rooibos.Stats()
     end function
 
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -59,7 +59,7 @@ namespace rooibos
 
       if isOk
         for each testData in m.testsData
-          test = new rooibos.Test(m, testData)
+          test = new Rooibos.Test(m, testData)
           m.tests.push(test)
 
           isOk = m.runSuiteFunction(m.beforeEachFunctionName, "beforeEach", test)

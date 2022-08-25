@@ -1,4 +1,4 @@
-namespace rooibos
+namespace Rooibos
   ' /**
   '  * @module TestSuite
   '  * @description All brs files that include `'@TestSuite` annotations automatically extend the TestSuite.
@@ -38,12 +38,12 @@ namespace rooibos
     protected ignoreValue = "#ROIBOS#IGNORE_VALUE" ' special value used in mock arguments
 
     'built in any matchers
-    protected anyStringMatcher = { "matcher": Rooibos_Matcher_anyString }
-    protected anyBoolMatcher = { "matcher": Rooibos_Matcher_anyBool }
-    protected anyNumberMatcher = { "matcher": Rooibos_Matcher_anyNumber }
-    protected anyAAMatcher = { "matcher": Rooibos_Matcher_anyAA }
-    protected anyArrayMatcher = { "matcher": Rooibos_Matcher_anyArray }
-    protected anyNodeMatcher = { "matcher": Rooibos_Matcher_anyNode }
+    protected anyStringMatcher = { "matcher": Rooibos.Matcher.anyString }
+    protected anyBoolMatcher = { "matcher": Rooibos.Matcher.anyBool }
+    protected anyNumberMatcher = { "matcher": Rooibos.Matcher.anyNumber }
+    protected anyAAMatcher = { "matcher": Rooibos.Matcher.anyAA }
+    protected anyArrayMatcher = { "matcher": Rooibos.Matcher.anyArray }
+    protected anyNodeMatcher = { "matcher": Rooibos.Matcher.anyNode }
     protected allowNonExistingMethodsOnMocks = true
     protected isAutoAssertingMocks = true
 
@@ -58,7 +58,7 @@ namespace rooibos
     function new()
       data = m.getTestSuitedata()
       if data = invalid
-        ? "ERROR RETRIEVING TEST SUITE DATA!! this is a rooibos BUG - please report the suite that resulted in a corrupt test. Thanks"
+        ? "ERROR RETRIEVING TEST SUITE DATA!! this is a Rooibos BUG - please report the suite that resulted in a corrupt test. Thanks"
       else
         m.name = data.name
         m.filePath = data.filePath
@@ -77,7 +77,7 @@ namespace rooibos
         m.nodeName = data.nodeName
         m.generatedNodeName = data.generatedNodeName
         m.isFailingFast = false
-        m.stats = new rooibos.Stats()
+        m.stats = new Rooibos.Stats()
       end if
     end function
 
@@ -110,7 +110,7 @@ namespace rooibos
         'bs:disable-next-line
         group = new TestGroup(m, groupData)
         ? ""
-        ? rooibos.common.fillText(">>>> Describe: " + group.name, ">", 80)
+        ? Rooibos.common.fillText(">>>> Describe: " + group.name, ">", 80)
         'bs:disable-next-line
         ? `  Location: file://${group.testSuite.filePath.trim()}:${group.lineNumber}`
         ? ""
@@ -131,9 +131,9 @@ namespace rooibos
       end for
     end function
 
-    function runTest(test as rooibos.Test)
+    function runTest(test as Rooibos.Test)
       ? ""
-      ? rooibos.common.fillText(">>>>>> It: " + test.name, ">", 80)
+      ? Rooibos.common.fillText(">>>>>> It: " + test.name, ">", 80)
       ? `  Location: file://${test.testSuite.filePath.trim()}:${test.lineNumber}`
       ? ""
 
@@ -159,7 +159,7 @@ namespace rooibos
         end if
       end if
 
-      ? rooibos.common.fillText("<<<< END It: " + test.name + " (" + m.currentResult.getStatusText() + ") ", "<", 80)
+      ? Rooibos.common.fillText("<<<< END It: " + test.name + " (" + m.currentResult.getStatusText() + ") ", "<", 80)
 
     end function
 
@@ -1125,7 +1125,7 @@ namespace rooibos
       if m.currentResult.isFail
         return false
       end if
-      if rooibos.Common.isFunction(func)
+      if Rooibos.Common.isFunction(func)
         func = func.toStr().mid(10).replace("_", ".")
       end if
       try
@@ -1564,7 +1564,7 @@ namespace rooibos
     '  * @param {Dynamic} target - object on which the method to be stubbed is found
     '  * @param {Dynamic} methodName - name of method to stub
     '  * @param {Dynamic} [returnValue=invalid] - value that the stub method will return when invoked
-    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then rooibos will only warn if the method did not exist prior to faking
+    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then Rooibos will only warn if the method did not exist prior to faking
     '  * @returns {Object} - stub that was wired into the real method
     '  */
     function stub(target, methodName, returnValue = invalid, allowNonExistingMethods = false) as object
@@ -1623,7 +1623,7 @@ namespace rooibos
     function _expectCalled(target, methodName, rootObject = invalid as dynamic, fullPath = invalid as dynamic, expectedArgs = invalid, returnValue = invalid as dynamic) as object
       try
         if type(target) <> "roAssociativeArray" and fullPath <> invalid
-          target = rooibos.Common.makePathStubbable(rootObject, fullPath)
+          target = Rooibos.Common.makePathStubbable(rootObject, fullPath)
         end if
         return m.mock(target, methodName, 1, expectedArgs, returnValue, true)
       catch error
@@ -1641,7 +1641,7 @@ namespace rooibos
     function _stubCall(target, methodName, rootObject = invalid as dynamic, fullPath = invalid as dynamic, returnValue = invalid as dynamic) as object
       try
         if type(target) <> "roAssociativeArray" and fullPath <> invalid
-          target = rooibos.Common.makePathStubbable(rootObject, fullPath)
+          target = Rooibos.Common.makePathStubbable(rootObject, fullPath)
         end if
         return m.stub(target, methodName, returnValue, true)
       catch error
@@ -1660,7 +1660,7 @@ namespace rooibos
     function _expectNotCalled(target, methodName, rootObject = invalid as dynamic, fullPath = invalid as dynamic) as object
       try
         if type(target) <> "roAssociativeArray" and fullPath <> invalid
-          target = rooibos.Common.makePathStubbable(rootObject, fullPath)
+          target = Rooibos.Common.makePathStubbable(rootObject, fullPath)
         end if
         return m.mock(target, methodName, 0, invalid, invalid, true)
       catch error
@@ -1682,7 +1682,7 @@ namespace rooibos
     '  * @param {Dynamic} methodName - name of method to stub
     '  * @param {Dynamic} [expectedArgs=invalid] - array containing the arguments we expect the method to be invoked with
     '  * @param {Dynamic} [returnValue=invalid] - value that the stub method will return when invoked
-    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then rooibos will only warn if the method did not exist prior to faking
+    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then Rooibos will only warn if the method did not exist prior to faking
     '  * @returns {Object} - mock that was wired into the real method
     '  */
     function expectOnce(target, methodName, expectedArgs = invalid, returnValue = invalid, allowNonExistingMethods = false) as object
@@ -1707,7 +1707,7 @@ namespace rooibos
     '  * @param {Dynamic} isExpected - if true, then this is the same as expectOnce, if false, then this is the same as expectNone
     '  * @param {Dynamic} [expectedArgs=invalid] - array containing the arguments we expect the method to be invoked with
     '  * @param {Dynamic} [returnValue=invalid] - value that the stub method will return when invoked
-    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then rooibos will only warn if the method did not exist prior to faking
+    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then Rooibos will only warn if the method did not exist prior to faking
     '  * @returns {Object} - mock that was wired into the real method
     '  */
     function expectOnceOrNone(target, methodName, isExpected, expectedArgs = invalid, returnValue = invalid, allowNonExistingMethods = false) as object
@@ -1732,7 +1732,7 @@ namespace rooibos
     '  * @description Creates a stub to replace a real method with, which the framework will track. If it was invoked, it will result in test failure
     '  * @param {Dynamic} target - object on which the method to be stubbed is found
     '  * @param {Dynamic} methodName - name of method to stub
-    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then rooibos will only warn if the method did not exist prior to faking
+    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then Rooibos will only warn if the method did not exist prior to faking
     '  * @returns {Object} - mock that was wired into the real method
     '  */
     function expectNone(target, methodName, allowNonExistingMethods = false) as object
@@ -1756,7 +1756,7 @@ namespace rooibos
     '  * @param {Dynamic} [expectedInvocations=1] - number of invocations we expect
     '  * @param {Dynamic} [expectedArgs=invalid] - array containing the arguments we expect the method to be invoked with
     '  * @param {Dynamic} [returnValue=invalid] - value that the stub method will return when invoked
-    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then rooibos will only warn if the method did not exist prior to faking
+    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then Rooibos will only warn if the method did not exist prior to faking
     '  * @returns {Object} - mock that was wired into the real method
     '  */
     function expect(target, methodName, expectedInvocations = 1, expectedArgs = invalid, returnValue = invalid, allowNonExistingMethods = false) as object
@@ -1780,7 +1780,7 @@ namespace rooibos
     '  * @param {Dynamic} expectedInvocations - number of invocations we expect
     '  * @param {Dynamic} [expectedArgs=invalid] - array containing the arguments we expect the method to be invoked with
     '  * @param {Dynamic} [returnValue=invalid] - value that the stub method will return when invoked
-    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then rooibos will only warn if the method did not exist prior to faking
+    '  * @param {boolean} [allowNonExistingMethods=false] - if true, then Rooibos will only warn if the method did not exist prior to faking
     '  * @returns {Object} - mock that was wired into the real method
     '  */
     function mock(target, methodName, expectedInvocations = 1, expectedArgs = invalid, returnValue = invalid, allowNonExistingMethods = false) as object
@@ -1814,15 +1814,15 @@ namespace rooibos
       end if
 
       fake = invalid
-      if not target.doesExist("__rooibosTargetId")
+      if not target.doesExist("__RooibosTargetId")
         m.__mockTargetId++
-        target["__rooibosTargetId"] = m.__mockTargetId
+        target["__RooibosTargetId"] = m.__mockTargetId
       end if
       'ascertain if mock already exists
       for i = 0 to m.__mockId
         id = stri(i).trim()
         mock = m.mocks[id]
-        if mock <> invalid and mock.methodName = methodName and mock.target.__rooibosTargetId = target.__rooibosTargetId
+        if mock <> invalid and mock.methodName = methodName and mock.target.__RooibosTargetId = target.__RooibosTargetId
           fake = mock
           fake.lineNumbers.push(lineNumber)
           exit for
@@ -2479,7 +2479,7 @@ namespace rooibos
 
     end function
 
-    protected function createNodeClass(clazz, useClassAsTop = true, nodeTop = new rooibos.utils.MockNode("top"), nodeGlobal = new rooibos.utils.MockNode("top"))
+    protected function createNodeClass(clazz, useClassAsTop = true, nodeTop = new Rooibos.Utils.MockNode("top"), nodeGlobal = new Rooibos.Utils.MockNode("top"))
       'bs:disable-next-line
       instance = tests_maestro_nodeClassUtils_createNodeClass(clazz, nodeTop, nodeGlobal)
       if instance <> invalid and useClassAsTop
@@ -2487,7 +2487,7 @@ namespace rooibos
         'thing.top.value, thing.top.value2, etc all over the place
         instance.append(nodeTop)
         instance.top = instance
-        instance.__rooibosSkipFields = { "top": true }
+        instance.__RooibosSkipFields = { "top": true }
       end if
       return instance
     end function

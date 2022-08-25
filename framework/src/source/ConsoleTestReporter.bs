@@ -1,5 +1,5 @@
-namespace rooibos
-  class ConsoleTestReporter extends rooibos.BaseTestReporter
+namespace Rooibos
+  class ConsoleTestReporter extends Rooibos.BaseTestReporter
 
     private lineWidth = 60
 
@@ -154,7 +154,7 @@ namespace rooibos
 
       for i = error.backTrace.count() - 1 to 0 step -1
         e = error.backTrace[i]
-        if e.filename.instr("pkg:/source/rooibos") = -1
+        if e.filename.instr("pkg:/source/Rooibos") = -1
           m.printLine(0, " | " + insetText + "    " + e.filename + "(" + stri(e.line_number).trim() + ")")
         end if
       end for

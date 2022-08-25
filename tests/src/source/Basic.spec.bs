@@ -2,7 +2,7 @@ namespace tests
 
   @noEarlyExit
   @suite
-  class BasicTests extends rooibos.BaseTestSuite
+  class BasicTests extends Rooibos.BaseTestSuite
 
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     @describe("equals fix for stubbed aas")
@@ -36,17 +36,17 @@ namespace tests
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     @it("works for simple case")
-    @params("http://101.rooibos.com")
+    @params("http://101.Rooibos.com")
     function _(url)
-      m.assertEqual(url, "http://101.rooibos.com")
+      m.assertEqual(url, "http://101.Rooibos.com")
     end function
 
     @it("on objects")
-    @params({ "url": "http://101.rooibos.com", "othervalue": 2 })
-    @params({ url: "http://101.rooibos.com", "othervalue": 2 })
-    @params({ url: "http://101.rooibos.com", othervalue: 2 })
+    @params({ "url": "http://101.Rooibos.com", "othervalue": 2 })
+    @params({ url: "http://101.Rooibos.com", "othervalue": 2 })
+    @params({ url: "http://101.Rooibos.com", othervalue: 2 })
     function urlParams_objects(aa)
-      m.assertEqual(aa.url, "http://101.rooibos.com")
+      m.assertEqual(aa.url, "http://101.Rooibos.com")
       m.assertEqual(aa.othervalue, 2)
     end function
 
@@ -122,8 +122,8 @@ namespace tests
     @it("passes If Is correct Class as reference")
     function _()
       m.assertClass({
-        __classname: "rooibos.BaseTestSuite"
-      }, rooibos.BaseTestSuite)
+        __classname: "Rooibos.BaseTestSuite"
+      }, Rooibos.BaseTestSuite)
       isFail = m.currentResult.isFail
 
       m.currentResult.Reset()

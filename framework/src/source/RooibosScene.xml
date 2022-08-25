@@ -7,40 +7,40 @@
 
   <!-- <script
       type='text/brighterscript'
-      uri='source/rooibos/BaseTestSuite.bs' />
+      uri='source/Rooibos/BaseTestSuite.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/CommonUtils.bs' />
+      uri='source/Rooibos/CommonUtils.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/Coverage.bs' />
+      uri='source/Rooibos/Coverage.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/Matchers.bs' />
+      uri='source/Rooibos/Matchers.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/Rooibos.bs' />
+      uri='source/Rooibos/Rooibos.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/RuntimeConfig.bs' />
+      uri='source/Rooibos/RuntimeConfig.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/Stats.bs' />
+      uri='source/Rooibos/Stats.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/Test.bs' />
+      uri='source/Rooibos/Test.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/TestGroup.bs' />
+      uri='source/Rooibos/TestGroup.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/TestLogger.bs' />
+      uri='source/Rooibos/TestLogger.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/TestResult.bs' />
+      uri='source/Rooibos/TestResult.bs' />
   <script
       type='text/brighterscript'
-      uri='source/rooibos/TestRunner.bs' /> -->
+      uri='source/Rooibos/TestRunner.bs' /> -->
 
   <children>
     <LayoutGroup>

@@ -1,4 +1,4 @@
-namespace rooibos.utils
+namespace Rooibos.Utils
   class MockNode
     public id
     public name
@@ -19,13 +19,13 @@ namespace rooibos.utils
     end function
 
     function createObject(nodeType)
-      node = new rooibos.utils.MockNode("", nodeType)
+      node = new Rooibos.Utils.MockNode("", nodeType)
       m.createdNodes.push(node)
       return node
     end function
 
     function createChild(nodeType)
-      node = new rooibos.utils.MockNode("", nodeType)
+      node = new Rooibos.Utils.MockNode("", nodeType)
       m.createdChildren.push(node)
       return node
     end function
@@ -35,7 +35,7 @@ namespace rooibos.utils
     end function
     function getParent()
       if m._parent = invalid
-        m._parent = new rooibos.utils.MockNode("_generated_parent")
+        m._parent = new Rooibos.Utils.MockNode("_generated_parent")
       end if
       return m._parent
     end function

@@ -1,10 +1,10 @@
-import "pkg:/source/rooibos/BaseTestSuite.bs"
+import "pkg:/source/Rooibos/BaseTestSuite.bs"
 
 namespace tests
 
   @noEarlyExit
   @suite("Rooibos assertion tests")
-  class AssertionTests extends rooibos.BaseTestSuite
+  class AssertionTests extends Rooibos.BaseTestSuite
 
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     @describe("tests basic assertions")

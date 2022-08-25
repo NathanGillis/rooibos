@@ -1,4 +1,4 @@
-namespace rooibos
+namespace Rooibos
   class Test
 
     public name
@@ -38,7 +38,7 @@ namespace rooibos
         m.name = m.name + stri(m.paramTestIndex)
       end if
 
-      m.result = new rooibos.TestResult(m)
+      m.result = new Rooibos.TestResult(m)
     end function
 
     function run()

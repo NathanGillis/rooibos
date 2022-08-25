@@ -1,7 +1,7 @@
 
 namespace tests
   @suite
-  class NewExpectSyntaxTests extends rooibos.BaseTestSuite
+  class NewExpectSyntaxTests extends Rooibos.BaseTestSuite
 
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     '+  Helper

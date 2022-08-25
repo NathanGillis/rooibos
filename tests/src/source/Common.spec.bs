@@ -1,7 +1,7 @@
 namespace tests
 
   @suite
-  class Common extends rooibos.BaseTestSuite
+  class Common extends Rooibos.BaseTestSuite
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     @describe("eqArray")
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

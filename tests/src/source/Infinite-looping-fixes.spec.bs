@@ -1,7 +1,7 @@
 namespace tests
 
   @suite
-  class InfiniteLoopingFixes extends rooibos.BaseTestSuite
+  class InfiniteLoopingFixes extends Rooibos.BaseTestSuite
 
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     @describe("AssertEquals")
@@ -55,14 +55,14 @@ namespace tests
       m.assertFalse(isFail)
     end function
 
-    @it("should account for __rooibosSkipFields on both sides - one field")
+    @it("should account for __RooibosSkipFields on both sides - one field")
     function _()
 
       a = {
         top: {
           "id": "not"
         }
-        __rooibosSkipFields: { top: true }
+        __RooibosSkipFields: { top: true }
         id: "equal"
       }
 
@@ -70,7 +70,7 @@ namespace tests
         top: {
           "id": "equal"
         }
-        __rooibosSkipFields: { top: true }
+        __RooibosSkipFields: { top: true }
         id: "equal"
       }
       m.assertEqual(a, b)
@@ -81,7 +81,7 @@ namespace tests
       m.assertFalse(isFail)
     end function
 
-    @it("should account for __rooibosSkipFields on both sides - two fields")
+    @it("should account for __RooibosSkipFields on both sides - two fields")
     function _()
 
       a = {
@@ -91,7 +91,7 @@ namespace tests
         top2: {
           "id": "not2"
         }
-        __rooibosSkipFields: { top: true, top2: true }
+        __RooibosSkipFields: { top: true, top2: true }
         id: "equal"
       }
 
@@ -102,7 +102,7 @@ namespace tests
         top2: {
           "id": "equal2"
         }
-        __rooibosSkipFields: { top: true, top2: true }
+        __RooibosSkipFields: { top: true, top2: true }
         id: "equal"
       }
       m.assertEqual(a, b)
@@ -130,11 +130,11 @@ namespace tests
         __stubs: {
           "id": "not"
         }
-        __rooibosSkipFields: { top: true }
+        __RooibosSkipFields: { top: true }
         id: "equal"
       }
 
-      m.assertEqual(rooibos.common.asString(a), "{id:equal}")
+      m.assertEqual(Rooibos.common.asString(a), "{id:equal}")
 
     end function
 

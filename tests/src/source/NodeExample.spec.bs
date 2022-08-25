@@ -3,7 +3,7 @@ namespace tests
   @ignore("not working")
   @SGNode("NodeExample")
   @suite
-  class NodeExampleTests extends rooibos.BaseTestSuite
+  class NodeExampleTests extends Rooibos.BaseTestSuite
     protected override function setup()
       m.setupThing = "something created during setup"
     end function

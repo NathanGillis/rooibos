@@ -1,4 +1,4 @@
-namespace rooibos.Common
+namespace Rooibos.Common
   ' /**
   '  * @module CommonUtils
   '  */
@@ -335,7 +335,7 @@ namespace rooibos.Common
         isFirst = false
       end if
       for each key in input
-        if rooibos.Common.canSafelyIterateAAKey(input, key)
+        if Rooibos.Common.canSafelyIterateAAKey(input, key)
           text = text + key + ":" + Rooibos.Common.asString(input[key], includeType)
         end if
       end for
@@ -347,7 +347,7 @@ namespace rooibos.Common
       maxLen = 500
       for each v in input
         if len(text) < maxLen
-          text += join + rooibos.Common.asString(v, includeType)
+          text += join + Rooibos.Common.asString(v, includeType)
           join = ", "
         end if
       end for
@@ -715,7 +715,7 @@ namespace rooibos.Common
         if not Value2.DoesExist(k)
           return false
         else
-          if rooibos.common.canSafelyIterateAAKey(Value1, k) and rooibos.common.canSafelyIterateAAKey(Value2, k)
+          if Rooibos.common.canSafelyIterateAAKey(Value1, k) and Rooibos.common.canSafelyIterateAAKey(Value2, k)
             v1 = Value1[k]
             v2 = Value2[k]
             if not Rooibos.Common.eqValues(v1, v2, fuzzy)
@@ -729,9 +729,9 @@ namespace rooibos.Common
   end function
 
   function canSafelyIterateAAKey(aa, key) as boolean
-    if lcase(key) = "__rooibosskipfields" or key = "__mocks" or key = "__stubs" 'fix infinite loop/box crash when doing equals on an aa with a mock
+    if lcase(key) = "__Rooibosskipfields" or key = "__mocks" or key = "__stubs" 'fix infinite loop/box crash when doing equals on an aa with a mock
       return false
-    else if aa.__rooibosSkipFields <> invalid and aa.__rooibosSkipFields.doesExist(key)
+    else if aa.__RooibosSkipFields <> invalid and aa.__RooibosSkipFields.doesExist(key)
       return false
     end if
 
@@ -814,7 +814,7 @@ namespace rooibos.Common
           index = parts[i]
         end if
 
-        if rooibos.Common.isArray(part) and isIndexNumber
+        if Rooibos.Common.isArray(part) and isIndexNumber
           nextPart = part[index]
         else if type(part) = "roAssociativeArray" and not isIndexNumber
           nextPart = part[index]
@@ -823,7 +823,7 @@ namespace rooibos.Common
         end if
 
         if nextPart = invalid or type(nextPart) <>  "roAssociativeArray"
-          if (not isIndexNumber and type(part) = "roAssociativeArray") or (isIndexNumber and (rooibos.Common.isArray(part)))
+          if (not isIndexNumber and type(part) = "roAssociativeArray") or (isIndexNumber and (Rooibos.Common.isArray(part)))
             nextPart = { id: index }
             part[index] = nextPart
           else

@@ -28,15 +28,15 @@
 </nav>
 
 <div id="main">
-    
+
     <h1 class="page-title">BaseTestSuite.brs</h1>
-    
-
-    
 
 
 
-    
+
+
+
+
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>' /**
@@ -1464,7 +1464,7 @@ function __Rooibos_BaseTestSuite_builder()
         ]
         for i = 0 to 9
             if (hasArgs and expectedArgs.count() > i) then
-                'guard against bad values 
+                'guard against bad values
                 value = expectedArgs[i]
                 if not Rooibos_Common_isUndefined(value) then
                     if Rooibos_Common_isAssociativeArray(value) and Rooibos_Common_isValid(value.matcher) then

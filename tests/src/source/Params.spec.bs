@@ -1,7 +1,7 @@
 namespace tests
 
   @suite
-  class ParamsTest extends rooibos.BaseTestSuite
+  class ParamsTest extends Rooibos.BaseTestSuite
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     @describe("params")
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

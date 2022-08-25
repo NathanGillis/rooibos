@@ -1,4 +1,4 @@
-namespace rooibos
+namespace Rooibos
   ' /**
   '  * @module TestRunner
   '  */
@@ -28,8 +28,8 @@ namespace rooibos
 
       m.nodeContext = nodeContext
 
-      m.stats = new rooibos.Stats()
-      m.runtimeConfig = new rooibos.RuntimeConfig()
+      m.stats = new Rooibos.Stats()
+      m.runtimeConfig = new Rooibos.RuntimeConfig()
       m.config = m.runtimeConfig.getRuntimeConfig()
       'TODO - allow providing different reporters via config
       m.testReporter = new Rooibos.ConsoleTestReporter(m)
@@ -99,7 +99,7 @@ namespace rooibos
 
       m.testReporter.reportResults(m.stats)
 
-      'code coverage is not enabled in rooibos 4.0.0 - will get added again in future
+      'code coverage is not enabled in Rooibos 4.0.0 - will get added again in future
       ' if Rooibos.Common.isFunction(RBS_reportCodeCoverage)
       '   'bs:disable-next-line
       '   RBS_reportCodeCoverage()
@@ -161,12 +161,12 @@ namespace rooibos
         node = m.testScene.createChild(testSuite.generatedNodeName)
 
         if type(node) = "roSGNode"
-          nodeResults = node.rooibosTestResult
+          nodeResults = node.RooibosTestResult
           if nodeResults <> invalid
             testSuite.stats = nodeResults.stats
             testSuite.testCases = nodeResults.testCases
           else
-            ? " ERROR! The node test"; testSuite.name; " did not return a result from from the rooibos_runNodeTestSuite method. This usually means you are not importing rooibos.brs and the required test file. Please refer to : https://github.com/georgejecook/rooibos/blob/master/docs/index.md#testing-scenegraph-nodes"
+            ? " ERROR! The node test"; testSuite.name; " did not return a result from from the Rooibos_runNodeTestSuite method. This usually means you are not importing Rooibos.brs and the required test file. Please refer to : https://github.com/georgejecook/Rooibos/blob/master/docs/index.md#testing-scenegraph-nodes"
           end if
           m.testScene.removeChild(node)
           return

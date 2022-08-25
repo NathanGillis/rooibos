@@ -4,7 +4,7 @@ namespace tests
 
   @Ignore("only unignore to test compiler works")
   @suite
-  class AfterEachNotRunning extends rooibos.BaseTestSuite
+  class AfterEachNotRunning extends Rooibos.BaseTestSuite
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     @describe("group1")
     '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
